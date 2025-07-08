@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        #foreignId
         Schema::create('xp_user_expos', function (Blueprint $table) {
             $table->id();
             $table->char('user_id', 26);
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->unique('user_id');
         });
 
+        #foreignId
         Schema::create('xp_teams', function (Blueprint $table) {
             $table->id();
             $table->char('user_id', 26);
@@ -33,6 +35,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
 
+        #foreignId
         Schema::create('xp_anggota_teams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('xp_user_expo_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
@@ -46,6 +49,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        #foreignId
         Schema::create('xp_karyas', function (Blueprint $table) {
             $table->id();
             $table->char('user_id', 26); #pembuat karya
@@ -65,6 +69,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
 
+        #foreignId
         Schema::create('xp_suka_karyas', function (Blueprint $table) {
             $table->id();
             $table->char('user_id', 26);

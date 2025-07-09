@@ -10,6 +10,8 @@ class EditXpUserExpo extends EditRecord
 {
     protected static string $resource = XpUserExpoResource::class;
 
+    protected static ?string $title = 'Edit Peserta Expo';
+
     protected function getHeaderActions(): array
     {
         return [

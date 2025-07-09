@@ -10,6 +10,8 @@ class EditXpKarya extends EditRecord
 {
     protected static string $resource = XpKaryaResource::class;
 
+    protected static ?string $title = 'Edit Karya Expo';
+
     protected function getHeaderActions(): array
     {
         return [

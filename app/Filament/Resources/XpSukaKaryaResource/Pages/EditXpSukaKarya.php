@@ -10,6 +10,8 @@ class EditXpSukaKarya extends EditRecord
 {
     protected static string $resource = XpSukaKaryaResource::class;
 
+    protected static ?string $title = 'Edit Karya Yang Disukai';
+
     protected function getHeaderActions(): array
     {
         return [

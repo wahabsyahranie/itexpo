@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\XpKaryaResource\Pages;
-use App\Filament\Resources\XpKaryaResource\RelationManagers;
-use App\Models\XpKarya;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\XpKarya;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\XpKaryaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\XpKaryaResource\RelationManagers;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class XpKaryaResource extends Resource
 {
@@ -23,7 +24,7 @@ class XpKaryaResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return 'Proyek';
+        return 'Karya';
     }
 
     public static function form(Form $form): Form
@@ -31,13 +32,19 @@ class XpKaryaResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
+                    ->label('User')
+                    ->native(false)
                     ->relationship('user', 'name')
                     ->required(),
                 Forms\Components\Select::make('xp_kategori_id')
-                    ->relationship('xpKategori', 'id')
+                    ->relationship('xpKategori', 'nama_kategori')
+                    ->native(false)
+                    ->label('Kategori')
                     ->required(),
                 Forms\Components\Select::make('xp_team_id')
-                    ->relationship('xpTeam', 'id')
+                    ->relationship('xpTeam', 'nama_team')
+                    ->label('Team')
+                    ->native(false)
                     ->required(),
                 Forms\Components\TextInput::make('nama_karya')
                     ->required()
@@ -56,14 +63,26 @@ class XpKaryaResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('ppt')
                     ->required()
+                    ->label('PPT')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('thumbnail')
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->disk('public')
                     ->required()
-                    ->maxLength(255),
+                    ->directory('img/thumbnail')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => 'thumbnail-' . $file->hashName(),
+                    )
+                    ->image()
+                    ->imageCropAspectRatio('4:3'),
+                // Forms\Components\TextInput::make('thumbnail')
+                //     ->required()
+                //     ->maxLength(255),
                 Forms\Components\TextInput::make('tahun_dibuat')
-                    ->required(),
-                Forms\Components\Toggle::make('dipublikasi')
-                    ->required(),
+                    ->required()
+                    ->maxLength(4)
+                    ->numeric(),
+                // Forms\Components\Toggle::make('dipublikasi')
+                //     ->required(),
             ]);
     }
 
@@ -71,27 +90,38 @@ class XpKaryaResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('no')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama Anggota')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('xpKategori.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('xpTeam.id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('xpTeam.nama_team')
+                    ->label('Nama Tim')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('nama_karya')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('video_promosi')
-                    ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('banner')
-                    ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('poster')
-                    ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('ppt')
-                    ->searchable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('thumbnail')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tahun_dibuat'),
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('tahun_dibuat')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('xpKategori.nama_kategori')
+                    ->label('Kategori')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Internet of Things' => 'info',
+                        'Website' => 'warning',
+                        'Machine Learning' => 'success',
+                        'Film' => 'danger',
+                        default => 'gray',
+                    }),
                 Tables\Columns\IconColumn::make('dipublikasi')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -107,7 +137,27 @@ class XpKaryaResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\Action::make('ispublikasi')
+                        ->color('success')
+                        ->label('Publikasikan')
+                        ->icon('heroicon-o-check-circle')
+                        ->requiresConfirmation()
+                        // ->visible(fn (XpKarya $record) => Auth::user()->hasAnyRole(['super_admin', 'admin']) && $record->status !== 'ditampilkan')
+                        ->action(function (XpKarya $record) {
+                            $record->update(['dipublikasi' => 1]);
+                        }),
+                    Tables\Actions\Action::make('isprivate')
+                        ->color('danger')
+                        ->label('Privatkan')
+                        ->icon('heroicon-o-x-circle')
+                        ->requiresConfirmation()
+                        // ->visible(fn (XpKarya $record) => Auth::user()->hasAnyRole(['super_admin', 'admin']) && $record->status !== 'ditampilkan')
+                        ->action(function (XpKarya $record) {
+                            $record->update(['dipublikasi' => 0]);
+                        }),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

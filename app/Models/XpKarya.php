@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class XpKarya extends Model
 {
@@ -23,5 +24,10 @@ class XpKarya extends Model
     public function xpKategori(): BelongsTo
     {
         return $this->belongsTo(XpKategori::class);
+    }
+
+    public function xpSukaKarya(): HasMany
+    {
+        return $this->hasMany(XpSukaKarya::class);
     }
 }

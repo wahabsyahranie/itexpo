@@ -7,6 +7,7 @@ use App\Filament\Resources\XpTeamResource\RelationManagers;
 use App\Models\XpTeam;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -43,7 +44,10 @@ class XpTeamResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('No')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('user.name')
+                    ->label('Ketua Tim')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nama_team')
                     ->searchable(),
@@ -72,7 +76,7 @@ class XpTeamResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\XpAnggotaTeamRelationManager::class,
         ];
     }
 

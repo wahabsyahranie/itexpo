@@ -10,12 +10,13 @@ class ListXpSukaKaryas extends ListRecords
 {
     protected static string $resource = XpSukaKaryaResource::class;
 
-    protected static ?string $title = 'Daftar Proyek Yang Disukai';
+    protected static ?string $title = 'Daftar Karya Yang Disukai';
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Tambah Suka'),
         ];
     }
 }

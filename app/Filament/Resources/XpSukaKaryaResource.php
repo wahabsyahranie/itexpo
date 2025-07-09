@@ -25,12 +25,21 @@ class XpSukaKaryaResource extends Resource
     {
         return 'Disukai';
     }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->label('Peserta')
+                    ->required(),
+                Forms\Components\Select::make('xp_karya_id')
+                    ->relationship('xpKarya', 'nama_karya')
+                    ->label('Karya')
+                    ->required()
+                    ->native()
+                    ->searchable()
+                    ->preload(3),
             ]);
     }
 
@@ -38,7 +47,22 @@ class XpSukaKaryaResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('no')
+                    ->rowIndex(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('xpKarya.nama_karya')
+                    ->label('Nama Karya')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateXpUserExpo extends CreateRecord
 {
     protected static string $resource = XpUserExpoResource::class;
+
+    protected static ?string $title = 'Tambah Peserta';
 }

@@ -10,12 +10,13 @@ class ListXpKaryas extends ListRecords
 {
     protected static string $resource = XpKaryaResource::class;
 
-    protected static ?string $title = 'Daftar Proyek Expo';
+    protected static ?string $title = 'Daftar Karya Expo';
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Tambah Karya'),
         ];
     }
 }

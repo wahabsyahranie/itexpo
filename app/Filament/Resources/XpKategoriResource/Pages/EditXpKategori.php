@@ -10,6 +10,8 @@ class EditXpKategori extends EditRecord
 {
     protected static string $resource = XpKategoriResource::class;
 
+    protected static ?string $title = 'Daftar Kategori';
+
     protected function getHeaderActions(): array
     {
         return [

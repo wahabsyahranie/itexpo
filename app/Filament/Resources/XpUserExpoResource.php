@@ -34,7 +34,9 @@ class XpUserExpoResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
-                    ->required(),
+                    ->required()
+                    ->native(false)
+                    ->searchable(),
                 Forms\Components\TextInput::make('linkedin')
                     ->required()
                     ->maxLength(255),
@@ -54,16 +56,15 @@ class XpUserExpoResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('No')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('linkedin')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('instagram')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('github')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('whatsapp')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('linkedin'),
+                Tables\Columns\TextColumn::make('instagram'),
+                Tables\Columns\TextColumn::make('github'),
+                Tables\Columns\TextColumn::make('whatsapp'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -83,7 +84,10 @@ class XpUserExpoResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->query(
+                XpUserExpo::query()->with('user') // ⬅️ PENTING!
+            );
     }
 
     public static function getRelations(): array

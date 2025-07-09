@@ -10,6 +10,8 @@ class EditXpTeam extends EditRecord
 {
     protected static string $resource = XpTeamResource::class;
 
+    protected static ?string $title = 'Edit Tim Expo';
+
     protected function getHeaderActions(): array
     {
         return [

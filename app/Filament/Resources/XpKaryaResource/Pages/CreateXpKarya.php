@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateXpKarya extends CreateRecord
 {
     protected static string $resource = XpKaryaResource::class;
+
+    protected static ?string $title = 'Tambah Karya Expo';
 }

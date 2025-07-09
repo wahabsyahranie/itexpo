@@ -42,7 +42,10 @@ class XpKategoriResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('No')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('nama_kategori')
+                    ->label('Kategori')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

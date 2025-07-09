@@ -41,6 +41,8 @@ return new class extends Migration
             $table->foreignId('xp_user_expo_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('xp_team_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
+
+            $table->unique(['xp_user_expo_id', 'xp_team_id']);
         });
 
         Schema::create('xp_kategoris', function (Blueprint $table) {

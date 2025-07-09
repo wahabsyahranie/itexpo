@@ -14,4 +14,9 @@ class XpSukaKarya extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function xpKarya(): BelongsTo
+    {
+        return $this->belongsTo(XpKarya::class);
+    }
 }

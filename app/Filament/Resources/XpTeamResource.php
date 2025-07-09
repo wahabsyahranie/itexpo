@@ -17,7 +17,14 @@ class XpTeamResource extends Resource
 {
     protected static ?string $model = XpTeam::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-user-group';
+
+    protected static ?int $navigationSort = 3;
+    
+    public static function getNavigationLabel(): string
+    {
+        return 'Tim';
+    }
 
     public static function form(Form $form): Form
     {

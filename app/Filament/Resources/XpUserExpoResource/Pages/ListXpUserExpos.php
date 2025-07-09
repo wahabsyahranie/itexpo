@@ -10,6 +10,8 @@ class ListXpUserExpos extends ListRecords
 {
     protected static string $resource = XpUserExpoResource::class;
 
+    protected static ?string $title = 'Daftar Peserta Expo';
+
     protected function getHeaderActions(): array
     {
         return [

@@ -17,7 +17,14 @@ class XpSukaKaryaResource extends Resource
 {
     protected static ?string $model = XpSukaKarya::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-heart';
+
+    protected static ?int $navigationSort = 2;
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Disukai';
+    }
 
     public static function form(Form $form): Form
     {

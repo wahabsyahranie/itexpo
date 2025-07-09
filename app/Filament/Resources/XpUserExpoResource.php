@@ -17,7 +17,16 @@ class XpUserExpoResource extends Resource
 {
     protected static ?string $model = XpUserExpo::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-users';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationGroup = 'Pengaturan';
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Peserta Expo';
+    }
 
     public static function form(Form $form): Form
     {

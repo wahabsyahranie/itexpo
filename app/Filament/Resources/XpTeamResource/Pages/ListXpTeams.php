@@ -10,6 +10,8 @@ class ListXpTeams extends ListRecords
 {
     protected static string $resource = XpTeamResource::class;
 
+    protected static ?string $title = 'Daftar Tim Expo';
+
     protected function getHeaderActions(): array
     {
         return [

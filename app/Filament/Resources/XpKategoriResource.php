@@ -17,7 +17,16 @@ class XpKategoriResource extends Resource
 {
     protected static ?string $model = XpKategori::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-tag';
+
+    protected static ?int $navigationSort = 5;
+
+    protected static ?string $navigationGroup = 'Pengaturan';
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Kategori';
+    }
 
     public static function form(Form $form): Form
     {

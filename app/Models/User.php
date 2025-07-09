@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -45,4 +47,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function xpUserExpo(): HasOne
+    {
+        return $this->hasOne(XpUserExpo::class);
+    }
+
+    public function xpKarya(): HasMany
+    {
+        return $this->hasMany(XpKarya::class);
+    }
+
+    public function xpSukaKarya(): HasMany
+    {
+        return $this->hasMany(XpSukaKarya::class);
+    }
+    
 }

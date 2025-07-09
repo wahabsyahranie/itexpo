@@ -10,6 +10,8 @@ class ListXpKaryas extends ListRecords
 {
     protected static string $resource = XpKaryaResource::class;
 
+    protected static ?string $title = 'Daftar Proyek Expo';
+
     protected function getHeaderActions(): array
     {
         return [

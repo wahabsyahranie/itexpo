@@ -10,6 +10,8 @@ class ListXpSukaKaryas extends ListRecords
 {
     protected static string $resource = XpSukaKaryaResource::class;
 
+    protected static ?string $title = 'Daftar Proyek Yang Disukai';
+
     protected function getHeaderActions(): array
     {
         return [

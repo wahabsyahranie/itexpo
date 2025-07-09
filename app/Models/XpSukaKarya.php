@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class XpSukaKarya extends Model
 {
-    protected $table = 'xp_suka_karya';
+    protected $table = 'xp_suka_karyas';
     protected $fillable = ['user_id', 'xp_karya_id'];
 
     public function user(): BelongsTo

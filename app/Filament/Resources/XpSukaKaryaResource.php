@@ -29,10 +29,6 @@ class XpSukaKaryaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->label('Peserta')
-                    ->required(),
                 Forms\Components\Select::make('xp_karya_id')
                     ->relationship('xpKarya', 'nama_karya')
                     ->label('Karya')

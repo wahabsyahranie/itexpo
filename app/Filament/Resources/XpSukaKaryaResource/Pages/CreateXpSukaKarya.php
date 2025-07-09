@@ -11,4 +11,12 @@ class CreateXpSukaKarya extends CreateRecord
     protected static string $resource = XpSukaKaryaResource::class;
 
     protected static ?string $title = 'Tambah Karya Yang Disukai';
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $user = auth()->id();
+        $data['user_id'] = $user;
+
+        return $data;
+    }
 }

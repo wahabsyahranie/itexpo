@@ -11,4 +11,12 @@ class CreateXpTeam extends CreateRecord
     protected static string $resource = XpTeamResource::class;
 
     protected static ?string $title = 'Tambah Tim Expo';
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $user = auth()->id();
+        $data['user_id'] = $user;
+
+        return $data;
+    }
 }

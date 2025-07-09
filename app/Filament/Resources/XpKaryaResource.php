@@ -2,13 +2,24 @@
 
 namespace App\Filament\Resources;
 
+use filament;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\XpKarya;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Illuminate\Support\HtmlString;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Wizard;
+use Illuminate\Support\Facades\Blade;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Wizard\Step;
 use App\Filament\Resources\XpKaryaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\XpKaryaResource\RelationManagers;
@@ -31,58 +42,73 @@ class XpKaryaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->label('User')
-                    ->native(false)
-                    ->relationship('user', 'name')
-                    ->required(),
-                Forms\Components\Select::make('xp_kategori_id')
-                    ->relationship('xpKategori', 'nama_kategori')
-                    ->native(false)
-                    ->label('Kategori')
-                    ->required(),
-                Forms\Components\Select::make('xp_team_id')
-                    ->relationship('xpTeam', 'nama_team')
-                    ->label('Team')
-                    ->native(false)
-                    ->required(),
-                Forms\Components\TextInput::make('nama_karya')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('deskripsi')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('video_promosi')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('banner')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('poster')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('ppt')
-                    ->required()
-                    ->label('PPT')
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('thumbnail')
-                    ->disk('public')
-                    ->required()
-                    ->directory('img/thumbnail')
-                    ->getUploadedFileNameForStorageUsing(
-                        fn (TemporaryUploadedFile $file): string => 'thumbnail-' . $file->hashName(),
-                    )
-                    ->image()
-                    ->imageCropAspectRatio('4:3'),
-                // Forms\Components\TextInput::make('thumbnail')
-                //     ->required()
-                //     ->maxLength(255),
-                Forms\Components\TextInput::make('tahun_dibuat')
-                    ->required()
-                    ->maxLength(4)
-                    ->numeric(),
-                // Forms\Components\Toggle::make('dipublikasi')
-                //     ->required(),
+                Wizard::make([
+                    Wizard\Step::make('Karya')
+                        ->schema([
+                            Forms\Components\Select::make('xp_kategori_id')
+                                ->relationship('xpKategori', 'nama_kategori')
+                                ->native(false)
+                                ->label('Kategori')
+                                ->required(),
+                            Forms\Components\Select::make('xp_team_id')
+                                ->relationship('xpTeam', 'nama_team')
+                                ->label('Team')
+                                ->native(false)
+                                ->required(),
+                            Forms\Components\TextInput::make('nama_karya')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('tahun_dibuat')
+                                ->required()
+                                ->maxLength(4)
+                                ->numeric(),
+                            Forms\Components\Textarea::make('deskripsi')
+                                ->required()
+                                ->columnSpanFull()
+                                ->autosize(),
+                        ])
+                        ->columns(2)
+                        ->icon('heroicon-m-cube-transparent')
+                        ->completedIcon('heroicon-o-cube-transparent'),
+                    Wizard\Step::make('Detail')
+                        ->schema([
+                            Forms\Components\TextInput::make('banner')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('poster')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('video_promosi')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('ppt')
+                                ->required()
+                                ->label('PPT')
+                                ->maxLength(255),
+                            Forms\Components\FileUpload::make('thumbnail')
+                                ->disk('public')
+                                ->required()
+                                ->directory('thumbnail')
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (TemporaryUploadedFile $file): string => 'thumbnail-' . $file->hashName(),
+                                )
+                                ->image()
+                                ->imageCropAspectRatio('4:3')
+                                ->columnSpanFull(),
+                        ])
+                        ->columns(2)
+                        ->icon('heroicon-m-queue-list')
+                        ->completedIcon('heroicon-o-queue-list')
+                ])
+                ->columnSpanFull()
+                ->submitAction(new HtmlString(Blade::render(<<<BLADE
+                    <x-filament::button
+                        type="submit"
+                        size="sm"
+                    >
+                        Submit
+                    </x-filament::button>
+                BLADE))),
             ]);
     }
 

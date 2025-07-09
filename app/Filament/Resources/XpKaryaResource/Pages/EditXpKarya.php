@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\XpKaryaResource\Pages;
 
-use App\Filament\Resources\XpKaryaResource;
 use Filament\Actions;
+use Illuminate\Support\Facades\Storage;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\XpKaryaResource;
 
 class EditXpKarya extends EditRecord
 {
@@ -17,5 +18,18 @@ class EditXpKarya extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $thumbnail = static::getRecord();
+
+        if ($thumbnail && isset($data['thumbnail']) && $data['thumbnail'] !== $thumbnail->thumbnail) {
+            if ($thumbnail->thumbnail && Storage::disk('public')->exists($thumbnail->thumbnail)) {
+                Storage::disk('public')->delete($thumbnail->thumbnail);
+            }
+        }
+
+        return $data;
     }
 }

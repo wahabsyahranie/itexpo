@@ -31,9 +31,6 @@ class XpTeamResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
                 Forms\Components\TextInput::make('nama_team')
                     ->required()
                     ->maxLength(255),
@@ -46,10 +43,10 @@ class XpTeamResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('No')
                     ->rowIndex(),
+                Tables\Columns\TextColumn::make('nama_team')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Ketua Tim')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('nama_team')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

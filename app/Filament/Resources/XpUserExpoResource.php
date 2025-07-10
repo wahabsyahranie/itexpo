@@ -33,6 +33,7 @@ class XpUserExpoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
+                    ->label('Nama Pengguna')
                     ->relationship('user', 'name')
                     ->required()
                     ->native(false)

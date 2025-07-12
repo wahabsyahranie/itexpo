@@ -18,7 +18,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 
 class XpAnggotaTeamRelationManager extends RelationManager
 {
-    protected static string $relationship = 'xpAnggotaTeam';
+    protected static string $relationship = 'xpAnggotaTeams';
 
     protected static ?string $title = 'Daftar Anggota Tim';
 

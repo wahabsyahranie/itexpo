@@ -42,6 +42,9 @@ class XpSukaKaryaResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function ($query){
+                $query->where('user_id', auth()->id());
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('no')
                     ->rowIndex(),

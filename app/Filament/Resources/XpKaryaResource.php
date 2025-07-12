@@ -118,9 +118,9 @@ class XpKaryaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('no')
                     ->rowIndex(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->label('Nama Anggota')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('user.name')
+                //     ->label('Nama Anggota')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('xpTeam.nama_team')
                     ->label('Nama Tim')
                     ->searchable(),

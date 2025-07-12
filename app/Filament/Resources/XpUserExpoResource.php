@@ -39,15 +39,20 @@ class XpUserExpoResource extends Resource
                     ->native(false)
                     ->searchable(),
                 Forms\Components\TextInput::make('linkedin')
+                    ->prefix('https://linkedin.com/in/')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('instagram')
+                    ->prefix('https://instagram.com/')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('github')
+                    ->prefix('https://github.com/')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('whatsapp')
+                    ->prefix('+62')
+                    ->numeric()
                     ->required()
                     ->maxLength(255),
             ]);

@@ -16,7 +16,7 @@ class XpTeam extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function xpAnggotaTeam(): HasMany
+    public function xpAnggotaTeams(): HasMany
     {
         return $this->hasMany(XpAnggotaTeam::class);
     }

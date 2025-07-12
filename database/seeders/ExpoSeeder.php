@@ -32,18 +32,20 @@ class ExpoSeeder extends Seeder
         DB::table('xp_user_expos')->insert([
             [  'id' => 1,
                 'user_id' => '01jv7pqks6n8zz8psysam0ewk9',
-                'linkedin' => 'https://www.linkedin.com/in/wahab-syahranie/',
-                'instagram' => 'https://www.instagram.com/wahabsyahranie/',
-                'github' => 'https://github.com/wahabsyahranie',
-                'whatsapp' => '+6281258765977'
+                'username' => 'wahabs',
+                'linkedin' => 'wahab-syahranie/',
+                'instagram' => 'wahabsyahranie/',
+                'github' => 'wahabsyahranie',
+                'whatsapp' => '81258765977'
             ],
             [
                 'id' => 2,
                 'user_id' => '01jv7pqks6n8zz8psysam0ewka',
+                'username' => 'evandayani',
                 'linkedin' => 'evandayani',
                 'instagram' => 'evandayanii',
                 'github' => 'evandayaniii',
-                'whatsapp' => '+6281258765977'
+                'whatsapp' => '81258765977'
             ]
         ]);
         DB::table('xp_teams')->insert([

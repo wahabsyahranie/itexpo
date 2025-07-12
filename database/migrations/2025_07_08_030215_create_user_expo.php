@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('xp_user_expos', function (Blueprint $table) {
             $table->id();
             $table->char('user_id', 26);
+            $table->string('username');
             $table->string('linkedin');
             $table->string('instagram');
             $table->string('github');
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->unique('user_id');
+            $table->unique(['user_id', 'username']);
         });
 
         #foreignId

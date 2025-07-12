@@ -27,17 +27,17 @@ class XpAnggotaTeamRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\Select::make('xp_user_expo_id')
-                    ->label('Nama Mahasiswa')
+                    ->label('Username')
                     ->columnSpanFull()
                     ->options(
                         \App\Models\XpUserExpo::with('user')
                             ->whereHas('user')
                             ->get()
                             ->mapWithKeys(function ($expo) {
-                                return [$expo->id => $expo->user->name];
+                                return [$expo->id => $expo->username];
                             }))
                             ->searchable()
-                            ->placeholder('Pilih user...')
+                            ->placeholder('Pilih atau masukkan username')
             ]);
     }
 

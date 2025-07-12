@@ -38,6 +38,10 @@ class XpUserExpoResource extends Resource
                     ->required()
                     ->native(false)
                     ->searchable(),
+                Forms\Components\TextInput::make('username')
+                    ->required()
+                    ->unique()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('linkedin')
                     ->prefix('https://linkedin.com/in/')
                     ->required()
@@ -66,6 +70,9 @@ class XpUserExpoResource extends Resource
                     ->rowIndex(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Nama')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('username')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('linkedin'),
                 Tables\Columns\TextColumn::make('instagram'),

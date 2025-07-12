@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Illuminate\Validation\ValidationException;
 use Filament\Pages\Auth\EditProfile as BaseEditProfile;
 
 class EditProfile extends BaseEditProfile
@@ -30,6 +32,7 @@ class EditProfile extends BaseEditProfile
                     Wizard\Step::make('Social')
                         ->label('Sosial Media')
                         ->schema([
+                            $this->getUsername(),
                             $this->getWhatsapp(),
                             $this->getGithub(),
                             $this->getInstagram(),
@@ -46,6 +49,20 @@ class EditProfile extends BaseEditProfile
             ]);
     }
 
+    protected function getUsername(): Component
+    {
+        return TextInput::make('username')
+            ->label(__('Username Expo'))
+            ->required()
+            ->autofocus()
+            ->rules([
+                'regex:/^[a-z0-9._]+$/',
+                'min:3',
+                'max:20',
+            ])
+            ->helperText('Gunakan huruf kecil, angka, titik, atau underscore. Tanpa spasi.');
+    }
+    
     protected function getLinkedin(): Component
     {
         return TextInput::make('linkedin')
@@ -96,9 +113,28 @@ class EditProfile extends BaseEditProfile
         $userData['name'] = $data['name'];
         $userData['email'] = $data['email'];
 
+        // Cek apakah username sudah digunakan oleh user lain
+        $existingExpo = XpUserExpo::where('username', $data['username'])
+            ->where('user_id', '!=', $record->id)
+            ->first();
+
+        if ($existingExpo) {
+            Notification::make()
+                ->title('Gagal memperbarui profil')
+                ->body('Username sudah digunakan oleh peserta lain.')
+                ->warning()
+                ->persistent()
+                ->send();
+
+            throw ValidationException::withMessages([
+                'username' => 'Username sudah digunakan.',
+            ]);
+        }
+
         //Menyimpan data field untuk userExpo table
         $expoData = [
             'user_id' => $record->id,
+            'username' => $data['username'],
             'linkedin' => $data['linkedin'],
             'github' => $data['github'],
             'instagram' => $data['instagram'],

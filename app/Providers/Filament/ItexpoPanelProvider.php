@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\EditProfile;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -56,16 +57,12 @@ class ItexpoPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->breadcrumbs(false)
+            ->profile(EditProfile::class)
             ->sidebarCollapsibleOnDesktop()
             ->topNavigation()
             // ->sidebarFullyCollapsibleOnDesktop()
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Keluar'),
-            //     MenuItem::make()
-            //         ->label('Settings')
-            //         ->url(fn (): string => Settings::getUrl())
-            //         ->icon('heroicon-o-cog-6-tooth'),
-            //     // ...
             ]);
     }
 }

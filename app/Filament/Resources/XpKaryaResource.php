@@ -94,7 +94,9 @@ class XpKaryaResource extends Resource
                                 )
                                 ->image()
                                 ->imageCropAspectRatio('4:3')
-                                ->columnSpanFull(),
+                                ->columnSpanFull()
+                                ->imageEditor()
+                                ->maxSize(5120),
                         ])
                         ->columns(2)
                         ->icon('heroicon-m-queue-list')

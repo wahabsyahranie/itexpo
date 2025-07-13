@@ -37,7 +37,7 @@ class EditProfile extends BaseEditProfile
                             $this->getGithub(),
                             $this->getInstagram(),
                             $this->getLinkedin(),
-                    ])
+                        ]),
                 ])->submitAction(new HtmlString(Blade::render(<<<BLADE
                     <x-filament::button
                         type="submit"
@@ -45,7 +45,8 @@ class EditProfile extends BaseEditProfile
                     >
                         Submit
                     </x-filament::button>
-                BLADE)))
+                    BLADE))
+                )
             ]);
     }
 

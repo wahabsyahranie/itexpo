@@ -87,16 +87,16 @@ class XpKaryaResource extends Resource
                                 ->maxLength(255),
                             Forms\Components\FileUpload::make('thumbnail')
                                 ->disk('public')
+                                ->label('Image Preview')
                                 ->required()
                                 ->directory('thumbnail')
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (TemporaryUploadedFile $file): string => 'thumbnail-' . $file->hashName(),
-                                )
+                                ->storeFileNamesIn('attachment_file_names')
                                 ->image()
                                 ->imageCropAspectRatio('4:3')
                                 ->columnSpanFull()
                                 ->imageEditor()
-                                ->maxSize(5120),
+                                ->visibility('public')
+                                ,
                         ])
                         ->columns(2)
                         ->icon('heroicon-m-queue-list')

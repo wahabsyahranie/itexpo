@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/project-likes', function () {
     return view('pages.project_likes');
 });
+
+Route::get('/project-my', function () {
+    return view('pages.project_my');
+});

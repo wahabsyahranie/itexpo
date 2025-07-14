@@ -1,15 +1,16 @@
-<nav class="grid grid-cols-3 items-center bg-primary-800 px-8 py-4 h-[100px] font-poppins drop-shadow-lg">
+<nav class="grid grid-cols-3 items-center bg-primary-900 px-8 py-4 h-[100px] font-poppins drop-shadow-lg">
     <!-- Kiri: Logo -->
     <div class="flex items-center">
-        <img src="{{ @asset('img/logo.png') }}" alt="Logo" class="w-[57px] h-[57px] block" />
+        {{-- <img src="{{ @asset('img/logo.png') }}" alt="Logo" class="w-[57px] h-[57px] block" /> --}}
+        <p class="text-[32px] font-bold">IT EXPO</p>
     </div>
 
     <!-- Tengah: Menu -->
     <ul class="flex justify-center items-center gap-8 text-[20px]">
-        <li><a href="/" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Home</a></li>
-        <li><a href="#" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">About Us</a></li>
-        <li><a href="#recentprojects" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Project</a></li>
-        <li><a href="/project-likes" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Disukai</a></li>
+        <li><a href="/" class="font-bold text-primary-100 hover:text-primary-200 hover:border-b border-primary-200 transition-all duration-300">Home</a></li>
+        <li><a href="/#aboutus" class="font-bold text-primary-100 hover:text-primary-200 hover:border-b border-primary-200 transition-all duration-300">About Us</a></li>
+        <li><a href="/#recentprojects" class="font-bold text-primary-100 hover:text-primary-200 hover:border-b border-primary-200 transition-all duration-300">Project</a></li>
+        <li><a href="/project-likes" class="font-bold text-primary-100 hover:text-primary-200 hover:border-b border-primary-200 transition-all duration-300">Disukai</a></li>
     </ul>
 
     <!-- Kanan: Search & Profile -->

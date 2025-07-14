@@ -1,6 +1,6 @@
 <x-layout>
     <div class="my-20">
-        <p class="text-[30px] font-bold mb-5 text-primary-100">Disukai</p>
+        <p class="text-[30px] font-bold mb-5 text-primary-100">My Projects</p>
         <div class="grid grid-cols-4 gap-2 mb-10">
             @php
                 $rows = 8;

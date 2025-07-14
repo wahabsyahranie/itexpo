@@ -76,10 +76,12 @@ class ExpoSeeder extends Seeder
             [
                 'id' => 1,
                 'nama_kategori' => 'Internet of Things',
+                'gambar_kategori' => 'webdev',
             ],
             [
                 'id' => 2,
                 'nama_kategori' => 'Website',
+                'gambar_kategori' => 'IoT',
             ]
         ]);
         DB::table('xp_karyas')->insert([

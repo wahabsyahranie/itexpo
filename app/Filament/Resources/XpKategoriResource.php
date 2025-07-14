@@ -35,6 +35,17 @@ class XpKategoriResource extends Resource
                 Forms\Components\TextInput::make('nama_kategori')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\FileUpload::make('gambar_kategori')
+                    ->disk('public')
+                    ->label('Icon')
+                    ->required()
+                    ->directory('kategori')
+                    ->storeFileNamesIn('kategori_file_names')
+                    ->image()
+                    ->imageCropAspectRatio('1:1')
+                    ->imageEditor()
+                    ->visibility('public')
+                    ,
             ]);
     }
 
@@ -44,6 +55,11 @@ class XpKategoriResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('No')
                     ->rowIndex(),
+                Tables\Columns\ImageColumn::make('gambar_kategori')
+                    ->extraImgAttributes(fn (XpKategori $record): array => [
+                        'alt' => "{$record->name} gambar",
+                    ])
+                    ->circular(),
                 Tables\Columns\TextColumn::make('nama_kategori')
                     ->label('Kategori')
                     ->searchable(),

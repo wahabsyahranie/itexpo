@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="mt-10">
-            <a href="/projects" class="underline text-[15px] hover:text-primary-600 transition-all duration-300">Lihat Selengkapnya</a>
+            <a href="#" class="underline text-[15px] hover:text-primary-600 transition-all duration-300">Lihat Selengkapnya</a>
         </div>
     </div>
      

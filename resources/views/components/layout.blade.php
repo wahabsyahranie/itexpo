@@ -8,10 +8,10 @@
     @vite('resources/css/app.css')
     <title>IT Expo</title>
 </head>
-<body class="bg-radial-[at_75%_25%] from-primary-900 via-primary-800 to-primary-700 to-90% text-primary-100">
+<body class="min-h-screen flex flex-col bg-radial-[at_75%_25%] from-primary-900 via-primary-800 to-primary-700 to-90% text-primary-100">
     <x-navbar />
     
-    <main class="container mx-auto mt-4 font-poppins">
+    <main class="container mx-auto mt-4 font-poppins flex-grow">
         {{ $slot }}
     </main>
 

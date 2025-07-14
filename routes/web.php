@@ -6,6 +6,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/projects', function () {
-    return view('pages.all_projects');
+Route::get('/project-likes', function () {
+    return view('pages.project_likes');
 });

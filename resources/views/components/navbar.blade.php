@@ -6,10 +6,10 @@
 
     <!-- Tengah: Menu -->
     <ul class="flex justify-center items-center gap-8 text-[20px]">
-        <li><a href="#" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Home</a></li>
+        <li><a href="/" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Home</a></li>
         <li><a href="#" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">About Us</a></li>
         <li><a href="#recentprojects" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Project</a></li>
-        <li><a href="#" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Disukai</a></li>
+        <li><a href="/project-likes" class="font-bold text-primary-100 hover:text-primary-600 hover:border-b border-primary-600 transition-all duration-300">Disukai</a></li>
     </ul>
 
     <!-- Kanan: Search & Profile -->

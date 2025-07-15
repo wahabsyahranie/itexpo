@@ -65,5 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(XpSukaKarya::class);
     }
-    
+
+    public function xpNews(): HasMany
+    {
+        return $this->hasMany(XpNews::class);
+    }
 }

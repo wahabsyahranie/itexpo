@@ -70,23 +70,29 @@
     <div id="news" class="pt-10 mb-30">
         <p class="text-center mb-10 text-[20px] font-medium">News</p>
         <div class="grid grid-flow-rows grid-cols-5 gap-4">
-            <div class="col-span-2">
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="col-1">
-                        <img class="rounded-2xl object-cover w-full h-30" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="gambar-1">
-                    </div>
-                    <div class="row-span-2 col-span-2">
-                        <img class="rounded-2xl object-cover w-full h-62" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="gambar-2">
-                    </div>
-                    <div class="col-1">
-                        <img class="rounded-2xl object-cover w-full h-30" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="gambar-3">
+            @foreach ($news_structured as $news )
+                <div class="col-span-2">
+                    <div class="grid grid-cols-3 gap-2">
+                        @foreach ($news['gambar'] as $gambar )
+                            @if ($loop->index === 1)
+                                <div class="row-span-2 col-span-2">
+                                    <img class="rounded-2xl object-cover w-full h-62" src="{{ @asset($gambar) }}" alt="gambar-1">
+                                </div>
+                            @else
+                                <div class="col-1">
+                                    <img class="rounded-2xl object-cover w-full h-30" src="{{ @asset($gambar) }}" alt="gambar-1">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
-            </div>
-            <div class="col-span-3 flex flex-col justify-center pl-5">
-                <p class="text-[30px] font-semibold mb-2">5 Mahasiswa Lolos Pendanaan PKM</p>
-                <p class="text-[20px] font-light tracking-[0.5px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quis repellat odio molestiae nam iusto? Magni explicabo natus vitae eos eum! In totam alias consectetur praesentium nulla voluptate quis nihil.</p>
-            </div>
+                <div class="col-span-3 flex flex-col justify-center pl-5">
+                    <p class="text-[30px] font-semibold mb-2 line-clamp-2">{{ $news['nama_berita'] }}</p>
+                    <div class="text-[20px] font-light tracking-[0.5px] line-clamp-2">
+                        {!! $news['deskripsi_berita'] !!}
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 

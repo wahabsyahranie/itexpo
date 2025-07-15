@@ -46,7 +46,7 @@ class XpNewsResource extends Resource
                     ->directory('berita')
                     ->storeFileNamesIn('berita_file_names')
                     ->image()
-                    ->imageCropAspectRatio('1:1')
+                    ->imageCropAspectRatio('4:3')
                     ->imageEditor()
                     ->visibility('public')
                     ->multiple()

@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\XpKategoriResource\Pages;
 
-use App\Filament\Resources\XpKategoriResource;
 use Filament\Actions;
+use Illuminate\Support\Facades\Storage;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\XpKategoriResource;
 
 class EditXpKategori extends EditRecord
 {
@@ -17,5 +18,18 @@ class EditXpKategori extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $gambar = static::getRecord();
+
+        if ($gambar && isset($data['gambar_kategori']) && $data['gambar_kategori'] !== $gambar->gambar_kategori) {
+            if ($gambar->gambar_kategori && Storage::disk('public')->exists($gambar->gambar_kategori)) {
+                Storage::disk('public')->delete($gambar->gambar_kategori);
+            }
+        }
+
+        return $data;
     }
 }

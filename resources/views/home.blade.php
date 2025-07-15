@@ -3,7 +3,7 @@
     {{-- Banner Utama --}}
     <div id="gambarutama" class="mb-15 pt-15 px-10 w-screen -mx-[calc((100vw-100%)/2)]">
         <div class="w-full h-[500px] bg-gradient-to-l from-primary-300 from-10% to-primary-200 to-90% rounded-3xl">
-            <img src="#" alt="gambar-utama">
+            <img class="w-full h-[500px] object-cover rounded-3xl" src="{{ @asset('img/asset/expo0.jpg') }}" alt="gambar-utama">
         </div>
     </div>
     
@@ -12,24 +12,26 @@
         <p class="text-center mb-5 text-[50px] font-bold">Apa itu IT EXPO?</p>
         <div class="grid grid-cols-3 gap-4">
             <div class="font-normal h-[186px] place-content-center col-span-2 bg-gradient-to-r from-primary-200 from-10% to-primary-300 to-90% py-5 px-10 rounded-3xl text-white">
-                <p class="text-[14px] text-base/8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto aspernatur harum dolores ea! Itaque quidem sit error quos, ducimus corrupti quia repellendus! Possimus laboriosam tenetur quidem ipsum officiis nulla excepturi!</p>
+                <p class="text-[14px] text-base/8">IT EXPO adalah program kerja dari jurusan Teknologi Informasi Politeknik Negeri Samarinda, yang dijalankan oleh HIMA TI. Program ini sebagai momen untuk mahasiswa TI menunjukkan karya-karya terbaik mereka mulai dari Website, IoT, Film, dan masih banyak lagi. <br>
+                Masih penasaran sama IT EXPO? cuss kita explore lebih jauh!</p>
             </div>
             <div class="bg-amber-500 rounded-3xl">
-                <img src="#" alt="gambar-expo">
+                <img class="w-full h-[186px] rounded-3xl object-cover" src="{{ @asset('img/asset/expo1.jpg') }}" alt="gambar-expo">
             </div>
             <div class="bg-amber-500 rounded-3xl">
-                <img src="#" alt="gambar-latar-belakang">
+                <img class="w-full h-[186px] rounded-3xl object-cover" src="{{ @asset('img/asset/expo2.jpg') }}" alt="gambar-tujuan">
             </div>
             <div class="h-[186px] place-content-center font-normal col-span-2 bg-gradient-to-l from-primary-200 from-10% to-primary-300 to-90% py-5 px-10 rounded-3xl text-white">
                 <p class="text-[25px] mb-3">Tujuan</p>
-                <p class="text-[14px] text-base/8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto aspernatur harum dolores ea! Itaque quidem sit error quos, ducimus corrupti quia repellendus! Possimus laboriosam tenetur quidem ipsum</p>
+                <p class="text-[14px] text-base/6">Yo Halloo... kenapa sih perlu ada IT EXPO? baik dari pihak Jurusan maupun kami selaku organisasi, kami ingin mahasiswa jurusan TI tidak lagi minder dengan kemampuan mereka, dengan adanya Expo ini kami ingin para mahasiswa dapat dengan berani menunjukkan karya-karya mereka dan memunculkan persaingan antar mahasiswa untuk saling meningkatkan kemampuan mereka.</p>
             </div>
             <div class="h-[186px] place-content-center font-normal col-span-2 bg-gradient-to-r from-primary-300 from-10% to-primary-200 to-90% py-5 px-10 rounded-3xl text-white">
-                <p class="text-[14px] text-base/8 italic">“Kreativitas adalah awal dari inovasi. <br>
+                <p class="text-[14px] text-base/8 italic">Ada sepatah kata dari UI/UX Designer kami loh...<br>
+                    “Kreativitas adalah awal dari inovasi. <br>
                     Lihat bagaimana mahasiswa TI mengubah ide menjadi karya nyata.”</p>
             </div>
             <div class="bg-amber-500 rounded-3xl">
-                <img src="#" alt="gambar-tujuan">
+                <img class="w-full h-[186px] rounded-3xl object-cover" src="{{ @asset('img/asset/expo3.jpg') }}" alt="gambar-tujuan">
             </div>
         </div>
     </div>
@@ -38,22 +40,12 @@
     <div id="categories" class="mb-15 pt-5 w-full max-w-screen-sm mx-auto">
         <p class="text-center mb-10 text-[20px] font-medium">Categories</p>
         <div class="grid grid-flow-col grid-cols gap-0 justify-items-center text-[15px] font-medium">
-            <div class="w-30 h-25">
-                <img class="rounded-md object-fill mb-2" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="content 1">
-                <p class="text-center">Website</p>
-            </div>
-            <div class="w-30 h-25">
-                <img class="rounded-md object-fill mb-2" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="content 1">
-                <p class="text-center">Film</p>
-            </div>
-            <div class="w-30 h-25">
-                <img class="rounded-md object-fill mb-2" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="content 1">
-                <p class="text-center">IoT</p>
-            </div>
-            <div class="w-30 h-25">
-                <img class="rounded-md object-fill mb-2" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="content 1">
-                <p class="text-center">Jaringan</p>
-            </div>
+            @foreach ($categories as $category )
+                <div class="w-[128px] h-[128px]">
+                    <img class="rounded-md object-fill mb-2" src="{{ @asset($category->gambar_kategori) }}" alt="content 1">
+                    <p class="text-center">{{ $category->nama_kategori }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 
@@ -61,16 +53,13 @@
     <div id="recentprojects" class="mx-auto justify-items-center mb-15 pt-10">
         <p class="text-center mb-10 text-[20px] font-medium">Recent Projects</p>
         <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
-            @php
-                $rows = 8;
-            @endphp
-            @for ($i = 0; $i < $rows; $i++)
+            @foreach ($recentCreations as $creation )
                 <div class="aspect-[16/9]">
-                    <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="content 1">
-                    <p class="truncate text-[15px] font-semibold">Judul 1</p>
-                    <p class="truncate mt-1 text-[10px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dolorem ab voluptas libero. Temporibus, molestias odio eius similique maxime totam sequi ullam voluptas aut, laborum asperiores veritatis a vero quae!</p>
+                    <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset($creation->thumbnail) }}" alt="content 1">
+                    <p class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</p>
+                    <p class="truncate mt-1 text-[10px]">{{ $creation->deskripsi }}</p>
                 </div>
-            @endfor
+            @endforeach
         </div>
         <div class="mt-10">
             <a href="#" class="underline text-[15px] hover:text-primary-200 transition-all duration-300">Lihat Selengkapnya</a>

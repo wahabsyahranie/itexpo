@@ -17,7 +17,7 @@
     <div class="flex justify-end items-center gap-5">
         <div class="relative">
             <input class="py-4 pr-12 pl-4 w-[228px] h-[48px] bg-primary-100 rounded-4xl text-primary-900" type="text" placeholder="Search...">
-            <img class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5" src="{{ asset('img/logo.png') }}" alt="search">
+            <img class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5" src="{{ asset('img/asset/search.svg') }}" alt="search">
         </div>
         <img src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="Profile" class="w-[57px] h-[57px] rounded-full" />
     </div>

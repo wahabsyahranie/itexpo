@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g id="bill">
+    <polygon points="302.391 148.913 211.087 148.913 211.087 67.024 225.942 77.962 241.522 67.024 257.93 77.962 273.82 67.024 288.054 77.962 302.391 67.024 302.391 148.913" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <g>
+      <line x1="230.941" y1="103.264" x2="257.809" y2="103.264" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="274.929" y1="103.264" x2="282.537" y2="103.264" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="230.941" y1="123.807" x2="257.809" y2="123.807" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="274.929" y1="123.807" x2="282.537" y2="123.807" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    </g>
+  </g>
+  <g id="top">
+    <rect x="111.304" y="99.348" width="24.522" height="49.565" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <rect x="62.783" y="58.87" width="121.565" height="40.478" rx="10.717" ry="10.717" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="cash_counter" data-name="cash counter">
+    <path d="M88.022,148.913h223.957c6.587,0,11.935,5.348,11.935,11.935v103.37H76.087v-103.37c0-6.587,5.348-11.935,11.935-11.935Z" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <rect x="50" y="264.217" width="300" height="85.043" rx="11.935" ry="11.935" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <circle cx="200" cy="306.739" r="15.652" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <g>
+      <line x1="103.783" y1="179.565" x2="114.261" y2="179.565" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="138.87" y1="179.565" x2="149.348" y2="179.565" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="103.783" y1="206.087" x2="114.261" y2="206.087" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="114.261" y1="232.609" x2="103.783" y2="232.609" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="138.87" y1="206.087" x2="149.348" y2="206.087" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="149.348" y1="232.609" x2="138.87" y2="232.609" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    </g>
+    <g>
+      <line x1="174" y1="179.565" x2="184.478" y2="179.565" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="174" y1="206.087" x2="184.478" y2="206.087" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="184.478" y1="232.609" x2="174" y2="232.609" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    </g>
+    <rect x="211.087" y="170.304" width="91.304" height="72.522" rx="5.739" ry="5.739" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="dash3">
+    <line x1="91.087" y1="79.109" x2="100.478" y2="79.109" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="dash2">
+    <line x1="118.87" y1="79.109" x2="128.261" y2="79.109" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="dash1">
+    <line x1="146.652" y1="79.109" x2="156.043" y2="79.109" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+</svg>

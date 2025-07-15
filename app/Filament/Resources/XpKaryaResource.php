@@ -92,7 +92,7 @@ class XpKaryaResource extends Resource
                                 ->directory('thumbnail')
                                 ->storeFileNamesIn('attachment_file_names')
                                 ->image()
-                                ->imageCropAspectRatio('4:3')
+                                ->imageCropAspectRatio('16:9')
                                 ->columnSpanFull()
                                 ->imageEditor()
                                 ->visibility('public')

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g id="laptop">
+    <path d="M75.131,94.611h249.738c8.279,0,15,6.721,15,15v165.342H60.131V109.611c0-8.279,6.721-15,15-15Z" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <path d="M39.71,274.953h320.579c2.6,0,4.71,2.111,4.71,4.71v6.331c0,10.704-8.69,19.394-19.394,19.394H54.394c-10.704,0-19.394-8.69-19.394-19.394v-6.331c0-2.6,2.111-4.71,4.71-4.71Z" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    <path d="M168.444,274.953h63.111v5.485c0,5.372-4.361,9.733-9.733,9.733h-43.645c-5.372,0-9.733-4.361-9.733-9.733v-5.485h0Z" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="handle2">
+    <line x1="156.673" y1="161.789" x2="180.548" y2="135.866" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="handle1">
+    <line x1="243.327" y1="161.789" x2="219.452" y2="135.866" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g id="basket">
+    <g>
+      <path d="M265.172,161.789c2.732,0,4.804,2.463,4.336,5.154l-10.158,58.491c-1.129,7.281-7.398,12.653-14.766,12.653h-89.167c-7.368,0-13.637-5.371-14.766-12.653l-10.158-58.491c-.467-2.691,1.604-5.154,4.336-5.154h130.344Z" fill="none" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="200" y1="185.012" x2="200" y2="214.863" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="233.871" y1="185.012" x2="228.645" y2="214.863" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+      <line x1="166.129" y1="185.012" x2="171.355" y2="214.863" fill="none" stroke="#4f46e5" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+    </g>
+  </g>
+</svg>

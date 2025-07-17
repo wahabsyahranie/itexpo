@@ -68,7 +68,7 @@
             @endforeach
         </div>
         <div class="mt-10">
-            <a href="#" class="underline text-[15px] hover:text-primary-200 transition-all duration-300">Lihat Selengkapnya</a>
+            <a href="/project-all" class="underline text-[15px] hover:text-primary-200 transition-all duration-300">Lihat Selengkapnya</a>
         </div>
     </div>
      

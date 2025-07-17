@@ -39,10 +39,10 @@
     {{-- Categories --}}
     <div id="categories" class="mb-15 pt-5 w-full max-w-screen-sm mx-auto">
         <p class="text-center mb-10 text-[20px] font-medium">Categories</p>
-        <div class="grid grid-flow-col grid-cols gap-0 justify-items-center text-[15px] font-medium">
+        <div class="grid grid-flow-col grid-cols justify-items-center text-[15px] font-medium">
             @foreach ($categories as $category )
-                <div class="w-[128px] h-[128px]">
-                    <img class="rounded-md object-fill mb-2" src="{{ @asset($category->gambar_kategori) }}" alt="content 1">
+                <div class="w-[128] h-[128] flex flex-col justify-center items-center aspect-[1/1]">
+                    <img class="mb-4" src="{{ @asset($category->gambar_kategori) }}" alt="content 1">
                     <p class="text-center">{{ $category->nama_kategori }}</p>
                 </div>
             @endforeach
@@ -54,7 +54,13 @@
         <p class="text-center mb-10 text-[20px] font-medium">Recent Projects</p>
         <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
             @foreach ($recentCreations as $creation )
-                <div class="aspect-[16/9]">
+                <div class="relative aspect-[16/9]">
+                    {{-- BADGE --}}
+                    <div class="w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
+                        {{ $creation->xpKategori->nama_kategori }}
+                    </div>
+
+                    {{-- THUMBNAIL --}}
                     <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset($creation->thumbnail) }}" alt="content 1">
                     <p class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</p>
                     <p class="truncate mt-1 text-[10px]">{{ $creation->deskripsi }}</p>
@@ -68,7 +74,7 @@
      
     {{-- Berita Terbaru--}}
     <div id="news" class="pt-10 mb-30">
-        <p class="text-center mb-10 text-[20px] font-medium">News</p>
+        <p class="text-center mb-10 text-[40px] font-bold">News</p>
         <div class="grid grid-flow-rows grid-cols-5 gap-4">
             @foreach ($news_structured as $news )
                 <div class="col-span-2">

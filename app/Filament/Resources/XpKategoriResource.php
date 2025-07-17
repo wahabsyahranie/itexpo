@@ -41,8 +41,10 @@ class XpKategoriResource extends Resource
                     ->required()
                     ->directory('kategori')
                     ->storeFileNamesIn('kategori_file_names')
+                    ->acceptedFileTypes(['image/svg'])
+                    ->rules(['mimes:svg'])
                     ->image()
-                    ->imageCropAspectRatio('1:1')
+                    // ->imageCropAspectRatio('4:3')
                     ->imageEditor()
                     ->visibility('public')
                     ,

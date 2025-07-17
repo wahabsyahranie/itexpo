@@ -14,7 +14,7 @@ class ExpoController extends Controller
     public function show(): View
     {
         $categories = XpKategori::get();
-        $recentCreations = XpKarya::where('dipublikasi', 1)->orderBy('created_at', 'desc')->limit(8)->get();
+        $recentCreations = XpKarya::with('xpKategori')->where('dipublikasi', 1)->orderBy('created_at', 'desc')->limit(8)->get();
         $news = XpNews::where('dipublikasi', 1)->orderBy('created_at', 'desc')->limit(1)->get();
 
         foreach($news as $item) {

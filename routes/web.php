@@ -10,9 +10,11 @@ Route::get('/project-likes', function () {
     return view('pages.project_likes');
 });
 
-// Route::get('/project-all', [ExpoController::class, 'all']);
-
 Route::get('/project-all', function () {
     return view('pages.project_all');
+});
+
+Route::get('/project-my', function() {
+    return view('pages.project_my');
 });
 

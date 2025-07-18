@@ -1,4 +1,5 @@
 <div>
+    {{-- TABS --}}
     <div class="flex justify-center gap-5 p-8">
         <button wire:click="setCategory(null)" class="h-[34px] px-10 text-[10px] rounded-2xl flex items-center justify-center {{ is_null($selectedCategory) ? 'bg-primary-300 text-primary-100' : 'bg-primary-base text-primary-900' }}">
             Semua
@@ -10,6 +11,7 @@
         @endforeach
     </div>
   
+    {{-- CARD --}}
     <div id="recentprojects" class="mx-auto justify-items-center mb-15 mt-8">
         <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
             @foreach ($recentCreations as $creation)
@@ -24,4 +26,16 @@
             @endforeach
         </div>
     </div>
+
+    {{ $recentCreations->links() }}
+
+    {{-- PAGINATION --}}
+    {{-- <div id="pagination" class="flex justify-center gap-2 px-10 pb-15">
+        <button></button>
+        <div class="bg-primary-200 px-3"><</div>
+        <div class="bg-primary-200 px-3">1</div>
+        <div class="bg-primary-200 px-3">2</div>
+        <div class="bg-primary-200 px-3">3</div>
+        <div class="bg-primary-200 px-3">></div>
+    </div> --}}
 </div>

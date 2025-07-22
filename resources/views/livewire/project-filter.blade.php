@@ -10,7 +10,8 @@
             </button>
         @endforeach
     </div>
-  
+
+
     {{-- CARD --}}
     <div id="recentprojects" class="mx-auto justify-items-center mb-15 mt-8">
         <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
@@ -20,22 +21,17 @@
                         {{ $creation->xpKategori->nama_kategori }}
                     </div>
                     <img class="w-full h-full rounded-md object-fill mb-3" src="{{ asset($creation->thumbnail) }}" alt="content 1">
-                    <p class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</p>
+                    <a href="/project/{{ $creation->id }}" class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</a>
                     <p class="truncate mt-1 text-[10px]">{{ $creation->deskripsi }}</p>
                 </div>
             @endforeach
         </div>
     </div>
 
-    {{ $recentCreations->links() }}
 
     {{-- PAGINATION --}}
-    {{-- <div id="pagination" class="flex justify-center gap-2 px-10 pb-15">
-        <button></button>
-        <div class="bg-primary-200 px-3"><</div>
-        <div class="bg-primary-200 px-3">1</div>
-        <div class="bg-primary-200 px-3">2</div>
-        <div class="bg-primary-200 px-3">3</div>
-        <div class="bg-primary-200 px-3">></div>
-    </div> --}}
+    <div class="pb-15">
+        {{ $recentCreations->links() }}
+    </div>
+    
 </div>

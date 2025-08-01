@@ -87,6 +87,7 @@
                                 </div>
                             @endforeach
                         </div>
+                        
                         {{-- MODAL --}}
                         @if ($showModal && $selectedAnggota)
                             <div class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50" wire:click="closeModal">

@@ -2,7 +2,7 @@
 
     <form action="/login" method="POST">
         @csrf
-        <div class="mt-30">
+        <div class="my-35">
 
             {{-- MAIN --}}
             <div class="relative my-auto mx-auto bg-primary-base w-[424px] h-[330px] rounded-[30px] shadow-xl/30 overflow-visible z-10">

@@ -14,11 +14,15 @@
     </ul>
 
     <!-- Kanan: Search & Profile -->
-    <div class="flex justify-end items-center gap-10">
+    <div class="flex justify-end items-center gap-5">
         <div class="relative">
             <input class="py-4 pr-12 pl-4 w-[228px] h-[48px] bg-primary-100 rounded-4xl text-primary-900" type="text" placeholder="Search...">
             <img class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5" src="{{ asset('img/asset/ic_search.svg') }}" alt="search">
         </div>
-        <img src="{{ @asset('thumbnail/01JZZNX06AYF6FVX0WP74AKXPW.png') }}" alt="Profile" class="w-[57px] h-[57px] rounded-full" />
+        @auth
+            @livewire('home-profile')
+        @else
+            <a href="/login" class="text-[20px] h-[48px] px-5 bg-primary-300 rounded-xl flex items-center hover:bg-primary-100 hover:text-primary-900 transition duration-300 ease-in-out">Login</a>
+        @endauth
     </div>
 </nav>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExpoController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\XpKarya;
@@ -24,3 +25,7 @@ Route::get('/project/{id}', function($id) {
     return view('pages.project_detail', ['project' => $project]);
 });
 
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::post('/logout', [LoginController::class, 'logout']);

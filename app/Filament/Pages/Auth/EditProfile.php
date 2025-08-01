@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Validation\ValidationException;
 use Filament\Pages\Auth\EditProfile as BaseEditProfile;
 
@@ -26,6 +27,7 @@ class EditProfile extends BaseEditProfile
                     Wizard\Step::make('User')
                         ->label('Profile User')
                         ->schema([
+                            $this->getProfile(),
                             $this->getNameFormComponent(),
                             $this->getEmailFormComponent(),
                         ]),
@@ -38,6 +40,10 @@ class EditProfile extends BaseEditProfile
                             $this->getInstagram(),
                             $this->getLinkedin(),
                         ]),
+                    // Wizard\Step::make('Profile')
+                    //     ->label('Profile')
+                    //     ->schema([
+                    //     ]),
                 ])->submitAction(new HtmlString(Blade::render(<<<BLADE
                     <x-filament::button
                         type="submit"
@@ -97,6 +103,26 @@ class EditProfile extends BaseEditProfile
             ->required()
             ->autofocus();
     }
+    protected function getProfile(): Component
+    {
+        return FileUpload::make('foto_profile')
+            ->label(__('Foto Profile'))
+            ->disk('public')
+            ->required()
+            ->directory('profile')
+            ->storeFileNamesIn('profile_file_names')
+            ->image()
+            ->imageCropAspectRatio('1:1')
+            ->imageEditor()
+            ->maxSize(4096)
+            ->visibility('public')
+            ->avatar()
+            ->circleCropper()
+            ->helperText('Maximum Size is 4mb')
+            ->extraAttributes([
+                'class' => 'mx-auto'
+        ]);
+    }
 
     //BUTTON FORM
     protected function getFormActions(): array
@@ -140,6 +166,7 @@ class EditProfile extends BaseEditProfile
             'github' => $data['github'],
             'instagram' => $data['instagram'],
             'whatsapp' => $data['whatsapp'],
+            'foto_profile' => $data['foto_profile'],
         ];
 
         XpUserExpo::updateOrInsert(

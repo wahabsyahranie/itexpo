@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class XpUserExpo extends Model
 {
     protected $table = 'xp_user_expos';
-    protected $fillable = ['user_id', 'linkedin', 'instagram', 'github', 'whatsapp'];
+    protected $fillable = ['user_id', 'linkedin', 'instagram', 'github', 'whatsapp', 'foto_profile'];
 
     public function user(): BelongsTo
     {

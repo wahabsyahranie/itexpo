@@ -72,19 +72,40 @@ class XpKaryaResource extends Resource
                         ->completedIcon('heroicon-o-cube-transparent'),
                     Wizard\Step::make('Detail')
                         ->schema([
-                            Forms\Components\TextInput::make('banner')
-                                ->required()
-                                ->maxLength(255),
-                            Forms\Components\TextInput::make('poster')
-                                ->required()
-                                ->maxLength(255),
                             Forms\Components\TextInput::make('video_promosi')
                                 ->required()
-                                ->maxLength(255),
+                                ->prefix('https://youtu.be/')
+                                ->maxLength(255)
+                                ->helperText('Paste Link Youtube'),
                             Forms\Components\TextInput::make('ppt')
                                 ->required()
                                 ->label('PPT')
-                                ->maxLength(255),
+                                ->maxLength(255)
+                                ->helperText('Paste Link GoogleDrive'),
+                            Forms\Components\FileUpload::make('banner')
+                                ->disk('public')
+                                ->label('X Banner')
+                                ->required()
+                                ->directory('thumbnail')
+                                ->storeFileNamesIn('attachment_file_names')
+                                ->image()
+                                ->imageCropAspectRatio('60:160')
+                                ->imageEditor()
+                                ->maxSize(4096)
+                                ->visibility('public')
+                                ->helperText('Maximum Size is 4mb'),
+                            Forms\Components\FileUpload::make('poster')
+                                ->disk('public')
+                                ->label('Poster')
+                                ->required()
+                                ->directory('poster')
+                                ->storeFileNamesIn('attachment_file_names')
+                                ->image()
+                                ->imageCropAspectRatio('297:420')
+                                ->imageEditor()
+                                ->maxSize(4096)
+                                ->visibility('public')
+                                ->helperText('Maximum Size is 4mb'),
                             Forms\Components\FileUpload::make('thumbnail')
                                 ->disk('public')
                                 ->label('Image Preview')
@@ -95,8 +116,9 @@ class XpKaryaResource extends Resource
                                 ->imageCropAspectRatio('16:9')
                                 ->columnSpanFull()
                                 ->imageEditor()
+                                ->maxSize(4096)
                                 ->visibility('public')
-                                ,
+                                ->helperText('Maximum Size is 4mb'),
                         ])
                         ->columns(2)
                         ->icon('heroicon-m-queue-list')

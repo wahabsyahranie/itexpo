@@ -4,18 +4,27 @@
 
         {{-- KIRI CARD --}}
         <div class="flex-auto flex flex-col gap-y-5">
-            <div class="bg-primary-base w-full h-[337px] rounded-xl">
-
+            <div class=" w-full h-[337px] rounded-xl overflow-hidden">
+                {{-- @php
+                    dd($project)
+                @endphp --}}
+                <iframe
+                    class="w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/{{ $project->video_promosi }}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
             <div class="flex flex-row gap-x-3">
-                <div class="bg-primary-base w-full h-[190px] rounded-xl">
-
+                <div class=" w-full h-[190px] rounded-xl">
+                    <img class="w-full h-[190px] object-cover rounded-xl" src="{{ @asset($project->banner) }}" alt="banner">
                 </div>
-                <div class="bg-primary-base w-full h-[190px] rounded-xl">
-
+                <div class=" w-full h-[190px] rounded-xl">
+                    <img class="w-full h-[190px] object-cover rounded-xl" src="{{ @asset($project->poster) }}" alt="poster">
                 </div>
-                <div class="bg-primary-base w-full h-[190px] rounded-xl">
-
+                <div class=" w-full h-[190px] rounded-xl">
+                    <img class="w-full h-[190px] object-cover rounded-xl" src="{{ @asset($project->thumbnail) }}" alt="thumbnail">
                 </div>
             </div>
         </div>
@@ -61,7 +70,7 @@
                                 <div class="bg-primary-base w-full h-[105px] rounded-full">
                                     <div class="w-full h-full flex flex-auto flex-row text-primary-900 items-center">
                                         <div class="w-[150px] flex items-center justify-center">
-                                            <img src="{{ @asset('berita/01K074Z22R3ZFSTPVWP0MKBMD2.jpg') }}" alt="anggota" class="w-[95px] h-[95px] object-cover rounded-full">
+                                            <img src="{{ @asset($anggota->xpUserExpo->foto_profile) }}" alt="anggota" class="w-[95px] h-[95px] object-cover rounded-full">
                                         </div>
                                         <div class="mx-5 w-full h-full relative flex flex-col justify-center">
                                             @if ($anggota->xpUserExpo->user_id === $project->xpTeam->user_id)
@@ -88,7 +97,7 @@
                                 <div wire:click.stop class="w-[600px] py-10 px-15 rounded-b-2xl shadow-lg relative bg-primary-100 text-primary-900">
                                     <div class="flex flex-row gap-10 items-center">
                                         <div class="h-[157px] min-w-[157px]">
-                                            <img src="{{ @asset('berita/01K074Z22R3ZFSTPVWP0MKBMD2.jpg') }}" alt="picture" class="h-[157px] w-[157px] rounded-full object-cover">
+                                            <img src="{{ @asset($selectedAnggota->xpUserExpo->foto_profile) }}" alt="picture" class="h-[157px] w-[157px] rounded-full object-cover">
                                         </div>
                                         <div class="space-y-2">
                                             <div class="pb-1 border-b border-gray-300">

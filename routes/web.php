@@ -9,7 +9,7 @@ use App\Models\XpKarya;
 
 Route::get('/', [ExpoController::class, 'show']);
 
-Route::get('/project-likes', [LikesController::class, 'index']);
+Route::get('/project-likes', [LikesController::class, 'index'])->middleware('auth');
 
 Route::get('/project-all', function () {
     return view('pages.project_all');

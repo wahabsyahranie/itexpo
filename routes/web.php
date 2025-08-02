@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\LikesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\XpKarya;
@@ -28,3 +29,5 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::post('/search', [SearchController::class, 'searchArticle']);

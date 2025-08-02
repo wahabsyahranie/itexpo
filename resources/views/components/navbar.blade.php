@@ -16,8 +16,13 @@
     <!-- Kanan: Search & Profile -->
     <div class="flex justify-end items-center gap-5">
         <div class="relative">
-            <input class="py-4 pr-12 pl-4 w-[228px] h-[48px] bg-primary-100 rounded-4xl text-primary-900" type="text" placeholder="Search...">
-            <img class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5" src="{{ asset('img/asset/ic_search.svg') }}" alt="search">
+            <form action="/search" method="POST">
+                @csrf
+                <input class="py-4 pr-12 pl-4 w-[228px] h-[48px] bg-primary-100 rounded-4xl text-primary-900" type="text" name="query" placeholder="Search..." id="query" autocomplete="off">
+                <button type="submit">
+                    <img class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5" src="{{ asset('img/asset/ic_search.svg') }}" alt="search">
+                </button>
+            </form>
         </div>
         @auth
             @livewire('home-profile')

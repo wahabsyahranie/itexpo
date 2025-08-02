@@ -23,36 +23,47 @@ class EditProfile extends BaseEditProfile
     {
         return $form
             ->schema([
-                Wizard::make([
-                    Wizard\Step::make('User')
-                        ->label('Profile User')
-                        ->schema([
-                            $this->getProfile(),
-                            $this->getNameFormComponent(),
-                            $this->getEmailFormComponent(),
-                        ]),
-                    Wizard\Step::make('Social')
-                        ->label('Sosial Media')
-                        ->schema([
-                            $this->getUsername(),
-                            $this->getWhatsapp(),
-                            $this->getGithub(),
-                            $this->getInstagram(),
-                            $this->getLinkedin(),
-                        ]),
-                    // Wizard\Step::make('Profile')
-                    //     ->label('Profile')
-                    //     ->schema([
-                    //     ]),
-                ])->submitAction(new HtmlString(Blade::render(<<<BLADE
-                    <x-filament::button
-                        type="submit"
-                        size="sm"
-                    >
-                        Submit
-                    </x-filament::button>
-                    BLADE))
-                )
+                $this->getProfile(),
+                $this->getUsername(),
+                $this->getWhatsapp(),
+                $this->getGithub(),
+                $this->getInstagram(),
+                $this->getLinkedin(),
+                // Wizard::make([
+                //     Wizard\Step::make('User')
+                //         ->label('Profile User')
+                //         ->schema([
+                //             $this->getProfile(),
+                //             $this->getUsername(),
+                //             $this->getWhatsapp(),
+                //             $this->getGithub(),
+                //             $this->getInstagram(),
+                //             $this->getLinkedin(),
+                //             // $this->getNameFormComponent(),
+                //             // $this->getEmailFormComponent(),
+                //         ]),
+                //     // Wizard\Step::make('Social')
+                //     //     ->label('Sosial Media')
+                //     //     ->schema([
+                //     //         $this->getUsername(),
+                //     //         $this->getWhatsapp(),
+                //     //         $this->getGithub(),
+                //     //         $this->getInstagram(),
+                //     //         $this->getLinkedin(),
+                //     //     ]),
+                //     // Wizard\Step::make('Profile')
+                //     //     ->label('Profile')
+                //     //     ->schema([
+                //     //     ]),
+                // ])->submitAction(new HtmlString(Blade::render(<<<BLADE
+                //     <x-filament::button
+                //         type="submit"
+                //         size="sm"
+                //     >
+                //         Submit
+                //     </x-filament::button>
+                //     BLADE))
+                // )
             ]);
     }
 
@@ -128,7 +139,7 @@ class EditProfile extends BaseEditProfile
     protected function getFormActions(): array
     {
         return [
-            // $this->getSaveFormAction(),
+            $this->getSaveFormAction()->label('Save'),
             $this->getCancelFormAction(),
         ];
     }
@@ -137,8 +148,8 @@ class EditProfile extends BaseEditProfile
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
         //Menyimpan data field untuk user table
-        $userData['name'] = $data['name'];
-        $userData['email'] = $data['email'];
+        // $userData['name'] = $data['name'];
+        // $userData['email'] = $data['email'];
 
         // Cek apakah username sudah digunakan oleh user lain
         $existingExpo = XpUserExpo::where('username', $data['username'])
@@ -174,13 +185,13 @@ class EditProfile extends BaseEditProfile
             $expoData
         );
 
-        $record->update($userData);
+        // $record->update($userData);
         return $record;
     }
 
     //LABEL FORM
     public static function getLabel(): string
     {
-        return __('Profile Expo');
+        return __('EDIT PROFILE');
     }
 }

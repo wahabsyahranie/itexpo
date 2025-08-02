@@ -3,7 +3,7 @@
         <button wire:click="toggle" class="h-[57px] w-[57px] rounded-full overflow-hidden">
             <img src="{{ asset(auth()->user()->xpUserExpo->foto_profile) }}"
                  alt="Profile"
-                 class="w-full h-full object-cover rounded-full" />
+                 class="w-full h-full object-cover rounded-full cursor-pointer" />
         </button>
 
         @if ($show)

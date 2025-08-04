@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\EditProfile;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -52,6 +53,9 @@ class ItexpoPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+            ])
+            ->plugins([
+                FilamentShieldPlugin::make(),
             ])
             ->authMiddleware([
                 Authenticate::class,

@@ -27,7 +27,7 @@
         @auth
             @livewire('home-profile')
         @else
-            <a href="/login" class="text-[20px] h-[48px] px-5 bg-primary-300 rounded-xl flex items-center hover:bg-primary-100 hover:text-primary-900 transition duration-300 ease-in-out">Login</a>
+            <a href="/login" class="text-[20px] h-[48px] px-5 bg-primary-300 rounded-xl flex items-center hover:bg-primary-100 hover:text-primary-900 transition duration-300 ease-in-out hover:scale-105">Login</a>
         @endauth
     </div>
 </nav>

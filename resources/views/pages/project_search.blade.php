@@ -9,9 +9,9 @@
 
         <div class="grid grid-cols-4 gap-2 mb-10">
             @foreach ( $results as $result )
-                <div class="relative bg-primary-100 w-full h-full rounded-[8px] p-5 text-primary-900 aspect-[111/100]">
+                <div class="relative bg-primary-100 w-full h-full rounded-[8px] p-5 text-primary-900 aspect-[111/100] hover:scale-105 group">
                     <div class="relative flex justify-center aspect-[16/9]">
-                            <div class="w-[80px] h-[34px] absolute -top-5 -right-5 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/10 flex items-center justify-center">
+                            <div class="group-hover:rotate-3 w-[80px] h-[34px] absolute -top-5 -right-5 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/10 flex items-center justify-center">
                                 {{ $result->xpKategori->nama_kategori }}
                             </div>
                         <a href="/project/{{ $result->id }}">

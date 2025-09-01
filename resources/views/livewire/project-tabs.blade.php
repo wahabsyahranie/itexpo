@@ -5,9 +5,6 @@
         {{-- KIRI CARD --}}
         <div class="flex-auto flex flex-col gap-y-5">
             <div class=" w-full h-[337px] rounded-xl overflow-hidden">
-                {{-- @php
-                    dd($project)
-                @endphp --}}
                 <iframe
                     class="w-full h-full rounded-xl"
                     src="https://www.youtube.com/embed/{{ $project->video_promosi }}"
@@ -23,8 +20,11 @@
                 <div class=" w-full h-[190px] rounded-xl">
                     <img class="w-full h-[190px] object-cover rounded-xl" src="{{ @asset($project->poster) }}" alt="poster">
                 </div>
-                <div class=" w-full h-[190px] rounded-xl">
+                <div class="group relative w-full h-[190px] rounded-xl overflow-hidden">
                     <img class="w-full h-[190px] object-cover rounded-xl" src="{{ @asset($project->thumbnail) }}" alt="thumbnail">
+                    <div class="flex items-center justify-center bg-gradient-to-t from-primary-900/80 to-primary-900/40 opacity-0 absolute inset-0 group-hover:opacity-100 transition duration-300 rounded-xl">
+                        <span class="text-white text-lg font-medium px-6 py-3 border-2 border-white/30 rounded-full transition-all pointer-events-auto duration-500 ease-in-out hover:backdrop-blur-sm">View</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
                         
                         {{-- MODAL --}}
                         @if ($showModal && $selectedAnggota)
-                            <div class="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-50" wire:click="closeModal">
+                            <div class="fixed inset-0 flex flex-col items-center justify-center z-50 bg-black/60 backdrop-blur-sm" wire:click="closeModal">
                                 <div wire:click.stop class="flex flex-row justify-between w-[600px] py-5 px-15 rounded-t-2xl shadow-lg relative bg-primary-900">
                                     <p class="text-primary-100">Profil Anggota</p>
                                     {{-- <button wire:click='closeModal'>Close</button> --}}
@@ -155,15 +155,17 @@
             <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
                 {{-- @foreach ($recentCreations as $creation ) --}}
                 @foreach ($karyas as $karya)
-                    <div class="relative aspect-[16/9]">
+                    <div class="relative aspect-[16/9] group hover:scale-105">
                         {{-- BADGE --}}
-                        <div class="w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
+                        <div class="group-hover:rotate-3 w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
                             {{ $karya->xpKategori->nama_kategori }}
                         </div>
 
                         {{-- THUMBNAIL --}}
-                        <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset($karya->thumbnail) }}" alt="content 1">
-                        <p class="truncate text-[15px] font-semibold">{{ $karya->nama_karya }}</p>
+                        <a href="/project/{{ $karya->id }}">
+                            <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset($karya->thumbnail) }}" alt="content 1">
+                        </a>
+                        <a href="/project/{{ $karya->id }}" class="truncate text-[15px] font-semibold">{{ $karya->nama_karya }}</a>
                         <p class="truncate mt-1 text-[10px]">{{ $karya->deskripsi }}</p>
                     </div>
                 @endforeach

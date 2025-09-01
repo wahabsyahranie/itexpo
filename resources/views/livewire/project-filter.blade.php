@@ -16,11 +16,13 @@
     <div id="recentprojects" class="mx-auto justify-items-center mb-15 mt-8">
         <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
             @foreach ($recentCreations as $creation)
-                <div class="relative aspect-[16/9]">
-                    <div class="w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
+                <div class="relative aspect-[16/9] hover:scale-105 group">
+                    <div class="group-hover:rotate-3 w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
                         {{ $creation->xpKategori->nama_kategori }}
                     </div>
-                    <img class="w-full h-full rounded-md object-fill mb-3" src="{{ asset($creation->thumbnail) }}" alt="content 1">
+                    <a href="/project/{{ $creation->id }}">
+                        <img class="w-full h-full rounded-md object-fill mb-3" src="{{ asset($creation->thumbnail) }}" alt="content 1">
+                    </a>
                     <a href="/project/{{ $creation->id }}" class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</a>
                     <p class="truncate mt-1 text-[10px]">{{ $creation->deskripsi }}</p>
                 </div>

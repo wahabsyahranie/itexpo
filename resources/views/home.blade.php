@@ -15,10 +15,10 @@
                 <p class="text-[14px] text-base/8">IT EXPO adalah program kerja dari jurusan Teknologi Informasi Politeknik Negeri Samarinda, yang dijalankan oleh HIMA TI. Program ini sebagai momen untuk mahasiswa TI menunjukkan karya-karya terbaik mereka mulai dari Website, IoT, Film, dan masih banyak lagi. <br>
                 Masih penasaran sama IT EXPO? cuss kita explore lebih jauh!</p>
             </div>
-            <div class="bg-amber-500 rounded-3xl">
+            <div class=" rounded-3xl">
                 <img class="w-full h-[186px] rounded-3xl object-cover" src="{{ @asset('img/asset/expo1.jpg') }}" alt="gambar-expo">
             </div>
-            <div class="bg-amber-500 rounded-3xl">
+            <div class=" rounded-3xl">
                 <img class="w-full h-[186px] rounded-3xl object-cover" src="{{ @asset('img/asset/expo2.jpg') }}" alt="gambar-tujuan">
             </div>
             <div class="h-[186px] place-content-center font-normal col-span-2 bg-gradient-to-l from-primary-200 from-10% to-primary-300 to-90% py-5 px-10 rounded-3xl text-white">
@@ -30,7 +30,7 @@
                     “Kreativitas adalah awal dari inovasi. <br>
                     Lihat bagaimana mahasiswa TI mengubah ide menjadi karya nyata.”</p>
             </div>
-            <div class="bg-amber-500 rounded-3xl">
+            <div class= rounded-3xl">
                 <img class="w-full h-[186px] rounded-3xl object-cover" src="{{ @asset('img/asset/expo3.jpg') }}" alt="gambar-tujuan">
             </div>
         </div>
@@ -54,15 +54,19 @@
         <p class="text-center mb-10 text-[20px] font-medium">Recent Projects</p>
         <div class="grid grid-flow-row grid-cols-4 gap-x-15 gap-y-20">
             @foreach ($recentCreations as $creation )
-                <div class="relative aspect-[16/9]">
+                <div class="relative aspect-[16/9] hover:scale-105 group">
                     {{-- BADGE --}}
-                    <div class="w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
+                    <div class="group-hover:rotate-3 w-[80px] h-[34px] absolute -top-5 -right-3 bg-primary-900 text-primary-100 text-[10px] px-3 py-1 rounded-full shadow-xl/30 flex items-center justify-center">
                         {{ $creation->xpKategori->nama_kategori }}
                     </div>
 
                     {{-- THUMBNAIL --}}
-                    <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset($creation->thumbnail) }}" alt="content 1">
-                    <p class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</p>
+                    <a href="/project/{{ $creation->id }}">
+                        <img class="w-full h-full rounded-md object-fill mb-3" src="{{ @asset($creation->thumbnail) }}" alt="content 1">
+                    </a>
+                    <a href="/project/{{ $creation->id }}">
+                        <p class="truncate text-[15px] font-semibold">{{ $creation->nama_karya }}</p>
+                    </a>
                     <p class="truncate mt-1 text-[10px]">{{ $creation->deskripsi }}</p>
                 </div>
             @endforeach
